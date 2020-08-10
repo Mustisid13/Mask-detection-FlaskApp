@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <title>Image Classifier</title>
+    <style media="screen">
+
+    .jumbotron,html,body{
+        height: 100%;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background: #70bg32;
+        background-repeat:no-repeat;
+        background: -webkit-linear-gradient( to left top, white, green);
+        background: -moz-linear-gradient( to left top, white, green);
+        background: -ms-linear-gradient(to left top, white, green);
+        background: -o-linear-gradient( to left top, white, green);
+        background: linear-gradient( to left top, white, green);
+    }
+    body {
+        font-family: sans-serif;
+      }
+
+      .file-upload {
+        background-color: #ffffff;
+        border: 3px double green;
+        width: auto;
+        margin: auto auto;
+        padding: 20px;
+      display: flex;
+      flex-direction: column;
+
+
+      }
+
+      .file-upload-btn {
+        width: 20%;
+        margin: 0 auto;
+        color: #fff;
+        background: #1FB264;
+
+        padding: 10px;
+        border-radius: 4px;
+        border-bottom: 4px solid #15824B;
+        transition: all .2s ease;
+        outline: none;
+        text-transform: uppercase;
+        font-weight: 700;
+
+      }
+
+      .file-upload-btn:hover {
+        background: #1AA059;
+        color: #ffffff;
+        transition: all .2s ease;
+        cursor: pointer;
+      }
+
+      .file-upload-btn:active {
+        border: 0;
+        transition: all .2s ease;
+      }
+
+      .file-upload-content {
+        display: none;
+        text-align: center;
+      }
+
+      .file-upload-input {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        outline: none;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      .image-upload-wrap {
+        margin-top: 20px;
+        border: 4px dashed #1FB264;
+        position: relative;
+      }
+
+      .image-dropping,
+      .image-upload-wrap:hover {
+        background-color: #1FB264;
+        border: 4px dashed #ffffff;
+      }
+
+      .image-title-wrap {
+        padding: 0 15px 15px 15px;
+        color: #222;
+      }
+
+      .drag-text {
+        text-align: center;
+      }
+
+      .drag-text h3 {
+        font-weight: 100;
+        text-transform: uppercase;
+        color: #15824B;
+        padding: 60px 0;
+      }
+
+      .file-upload-image {
+        max-height: 200px;
+        max-width: 200px;
+        margin: auto;
+        padding: 20px;
+      }
+
+      .remove-image {
+        width: 200px;
+        margin: 0;
+        color: #fff;
+        background: #cd4535;
+        border: none;
+        padding: 10px;
+        border-radius: 4px;
+        border-bottom: 4px solid #b02818;
+        transition: all .2s ease;
+        outline: none;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      .remove-image:hover {
+        background: #c13b2a;
+        color: #ffffff;
+        transition: all .2s ease;
+        cursor: pointer;
+      }
+
+      .remove-image:active {
+        border: 0;
+        transition: all .2s ease;
+      }
+
+      h1{
+        font-family: sans-serif;
+        text-align: center;
+        color:green;
+
+      }
+    </style>
+
+  </head>
+
+  <body>
+<div class="jumbotron">
+<div class="file-upload">
+
+  <h1>MASK DETECTION</h1>
+  <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
+
+  <div class="image-upload-wrap">
+
+
+    <form  action="/upload" method="post" id="myForm">
+    <input class="file-upload-input" id="upload" type='file' onchange="readURL(this);" accept="image/*" />
+    <div class="drag-text">
+      <h3>Drag and drop a file or select add Image</h3>
+    </div>
+  </div>
+  <div class="file-upload-content">
+    <img class="file-upload-image" src="#" alt="your image" />
+    <div class="image-title-wrap">
+      <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+    </div>
+    <button id="submit-btn" class="btn-primary" type="submit">Predict</button>
+    </form>
+    <!-- Result Area -->
+    <p class="font-italic text-center pad">Prediction: </p>
+    <div class="result-area mt-4"><p style="margin: 0; color: white; visibility: hidden;" id="result">Photo Uploaded...Processing...</p></div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script src="../static/javascript/main.js"></script>
+  </body>
+
+</html>
